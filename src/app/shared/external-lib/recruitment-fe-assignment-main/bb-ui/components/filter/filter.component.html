@@ -1,0 +1,11 @@
+<form class="filter-form w-50" action="#">
+  <div class="form-group">
+    <div class=" input-group">
+      <div  class="input-group-prepend">
+        <div class="input-group-text"><i class="lni lni-search"></i></div>
+      </div>
+      <input (keyup)="onInputChange($event.target.value)" type="text" class="form-control" id="transactions"
+        aria-describedby="filterTransactions" placeholder="filter transactions" data-test-hook="filterInput">
+    </div>
+  </div>
+</form>

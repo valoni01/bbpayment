@@ -1,0 +1,60 @@
+<!-- verification components -->
+<app-modal  *ngIf="modalStatus" [status]="modalStatus">
+<ng-container class="head">
+  <b class="bolder">Review</b> Transfer
+</ng-container>
+<ng-container class="body">
+  <p><i>Are you ready to send out this transfer?</i></p>
+  <p class="bolder">It will be send to account:</p>
+  <!-- <p>{{transferReq.transfer.merchant.name}}</p> -->
+  <p class="bolder">With the amount of:</p>
+  <!-- <p>{{transferReq.transfer.transaction.amountCurrency.amount | currency:'EUR'}}</p> -->
+</ng-container>
+<ng-container class="buttonMsg">
+    <button type="button" class="btn btn-secondary secondaryButtons" (click)="closeModal()" >Close</button>
+    <button type="button" class="btn btn-primary pryButtons" (click)="processTranfer()">Send Transfer</button>
+</ng-container>
+</app-modal>
+
+
+<!-- Transfer Form -->
+<app-card>
+  <span class="head">
+    <i class="lni lni-credit-cards"></i>
+       <b class="bolder">  Make</b>     Transfer</span>
+  <div class="body" >
+    <form [formGroup]="transferForm" >
+      <fieldset disabled>
+        <div class="form-group">
+          <label for="disabledTextInput">From Account</label>
+          <input  id="disabledTextInput" class="form-control" placeholder="My Personal Account:{{this.transferForm.get('accountBalance')?.value | currency : 'EUR'}}" >
+        </div>
+      </fieldset>
+      <div formGroupName="merchant">
+        <div class="form-group">
+          <label for="Account">To Account</label>
+          <input type="text" formControlName="name" class="form-control form-styled" id="Account" aria-describedby="emailHelp" placeholder="type an account name">
+        </div>
+      </div>
+      <div formGroupName="transaction">
+        <div formGroupName="amountCurrency">
+        <label for="Amount">Amount</label>
+        <div class="form-group input-group" style="margin-bottom: -10px;">
+          <div  class="input-group-prepend">
+            <div class="input-group-text"><i class="lni lni-euro"></i></div>
+          </div>
+          <input  type="number" formControlName="amount" class="form-control form-styled" id="transactions"
+            aria-describedby="filterTransactions" placeholder="specify the amount">
+        </div>
+          <ng-container *ngIf="f.controls.amount.errors && f.controls.amount.touched">
+            <span class="error" *ngIf="f.controls.amount.errors?.required">This field is required</span>
+            <span class="error"  *ngIf="f.controls.amount.errors?.isamountValid">Amount should be greater than 0</span>
+            <span class="error"  *ngIf="f.controls.amount.errors?.isBalanceValid">There is not enough balance</span>
+          </ng-container>
+        </div>
+      </div>
+      <app-submit-button (submitForm)="processTranfer()"></app-submit-button>
+    </form>
+  </div>
+</app-card>
+

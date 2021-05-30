@@ -1,0 +1,63 @@
+@import '../styles/var';
+
+label{
+  padding-bottom: $small-spacing;
+  font-weight: bold;
+}
+
+
+.form-styled::placeholder  {
+  font-style: italic;
+}
+
+
+input.ng-touched.ng-invalid{
+  border:1px solid ;
+}
+
+
+.error{
+color:$error_color
+}
+
+
+::ng-deep .js-trigger-form, .pryButtons{
+  background-color: $submit_button;
+  float:right;
+  border:none;
+  color:white;
+}
+
+
+
+
+.input-group-prepend, input{
+  height:35px;
+ }
+
+
+ ::ng-deep .js-trigger-form:hover{
+  background-color: $submit_button;
+  float:right;
+  border:none;
+  color:white;
+}
+
+::ng-deep .js-trigger-form:hover,
+::ng-deep .js-trigger-form:focus {
+    background-color: $submit_button;
+    border-color: $submit_button;
+}
+
+.secondaryButtons{
+  background-color: white;
+  border:1px solid grey;
+  color:black;
+}
+
+
+.close{
+  border: none;
+  background-color: white;
+  font-size: 20px;
+}

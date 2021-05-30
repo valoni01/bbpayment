@@ -1,0 +1,44 @@
+@import '../assets/styles/var.scss';
+
+.body{
+  background-image: $backgroundImage;
+  background-repeat: no-repeat;
+  filter: blur(3px);
+  background-size: cover;
+  width:100%;
+  display:block;
+  z-index:1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.container{
+  width:80%;
+  padding: $large-spacing;
+}
+
+
+
+
+.header{
+   width:100%;
+   background-color:white;
+   padding:$medium-spacing;
+   #msg{
+     float:right;
+     color:$primary-blue;
+   }
+
+}
+
+
+.footer{
+  background-color: white;
+  padding:$medium-spacing;
+}
+
+

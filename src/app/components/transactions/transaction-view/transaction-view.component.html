@@ -1,0 +1,23 @@
+<app-card>
+  <span class="head">
+    <i class="lni lni-list"></i>
+       Transaction<b class="bolder">   List</b>
+  </span>
+  <div class="body">
+    <div>
+      <app-filter  (inputChange)="search($event)" ></app-filter>
+    </div>
+    <ng-container *ngFor="let txn of transactions$ | async " >
+      <app-transaction-item >
+        <div [ngStyle]="{'border-color': txn.categoryCode}"  style="border-left:5px solid" data-test-hook="transactionColour"></div>
+        <div data-test-hook="transactionDate">{{txn.dates.valueDate | date: 'MMM d' }}</div>
+        <div  data-test-hook="transactionMerchantName" style="line-height:15px">
+          {{txn.merchant.name}}
+         <span  id="txntype" data-test-hook="transactionType">{{txn.transaction.type}}</span>
+        </div>
+        <div data-test-hook="transactionAmount">{{txn.transaction.amountCurrency.amount |  currency:txn.transaction.amountCurrency.currencyCode}}</div>
+      </app-transaction-item>
+    </ng-container>
+  </div>
+</app-card>
+
