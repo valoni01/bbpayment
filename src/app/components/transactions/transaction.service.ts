@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, throwError  } from 'rxjs';
-import { catchError, debounceTime, distinctUntilChanged, filter, map, shareReplay, switchMap, take, tap } from 'rxjs/operators';
+import { catchError,  map, shareReplay, take, tap } from 'rxjs/operators';
 import { TxnResponse } from './models/Transaction_Response';
 import * as localStore from '../../shared/external-lib/recruitment-fe-assignment-main/bb-ui/mock-data/transactions.json';
 import { environment } from '../../../environments/environment'
@@ -45,7 +45,7 @@ export class TransactionService {
    }
 
 //Filter transactions by name
-//There is no need to debounce,Trottle or cache since we already have the data locally
+//There is no need to debounce/Trottle or cache since we already have the data locally
    filterTransactions(name:string):Observable<TxnResponse[]>{
      if(!name){
        return this.currentSearchValue$;
@@ -58,8 +58,6 @@ export class TransactionService {
        })
      )
    }
-
-
 
 
 //Transfer Money

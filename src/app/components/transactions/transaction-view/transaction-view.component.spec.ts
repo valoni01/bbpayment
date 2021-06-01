@@ -7,9 +7,10 @@ import { TransactionViewComponent } from './transaction-view.component';
 describe('TransactionViewComponent', () => {
   let component: TransactionViewComponent;
   let fixture: ComponentFixture<TransactionViewComponent>;
+  let MockedTxnService:TransactionService;
 
   beforeEach(async () => {
-    let MockedTxnService = jasmine.createSpyObj(['getRemoteTRansactions','filterTransactions'])
+    MockedTxnService = jasmine.createSpyObj(['getRemoteTRansactions','filterTransactions'])
     await TestBed.configureTestingModule({
       declarations: [ TransactionViewComponent ],
       providers:[
@@ -26,6 +27,8 @@ describe('TransactionViewComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+
 
 
 });

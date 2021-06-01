@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  base_url:'https://r9vdzv10vd.execute-api.eu-central-1.amazonaws.com/dev'
+  base_url:'https://r9vdzv10vd.execute-api.eu-central-1.amazonaws.com/dev',
+  currency_codes: {"EUR":"EUR"}
 };
 
 /*

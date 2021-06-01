@@ -24,3 +24,18 @@ export interface Merchant{
  name:string;
  accountNumber:string;
 }
+
+
+export enum TxnType{
+  CardPayment = 'Card Payment',
+  OnlineTransfer = 'Online Transfer',
+  Salaries="Salaries"
+}
+
+export enum ColorCode{
+  Green='#12a580',
+  Yellow='#c89616',
+  Red='#d51271',
+  Orange='#e25a2c',
+  Blue='#1180aa'
+}

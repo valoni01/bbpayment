@@ -29,7 +29,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
   errorHandler(error: HttpErrorResponse) {
     switch (error.status) {
       case 404: {
-          return alert(`Not Found: The resource you are searching for does not exist`);
+          return console.log(`Not Found: The resource you are searching for does not exist`);
       }
       case 403: {
           return `Access Denied: ${error.message}`;
@@ -38,7 +38,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
           return `Internal Server Error: ${error.message}`;
       }
       default: {
-          return alert(`Unknown Server Error: ${error.message}`);
+          return console.log(`Unknown Server Error: ${error.message}`);
       }
   }
   }
