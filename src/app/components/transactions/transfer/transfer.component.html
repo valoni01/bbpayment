@@ -6,9 +6,9 @@
 <ng-container class="body">
   <p><i>Are you ready to send out this transfer?</i></p>
   <p class="bolder">It will be send to account:</p>
-  <!-- <p>{{transferReq.transfer.merchant.name}}</p> -->
+  <p>{{transferReq.merchant.name}}</p>
   <p class="bolder">With the amount of:</p>
-  <!-- <p>{{transferReq.transfer.transaction.amountCurrency.amount | currency:'EUR'}}</p> -->
+  <p>{{transferReq.transaction.amountCurrency.amount | currency:'EUR'}}</p>
 </ng-container>
 <ng-container class="buttonMsg">
     <button type="button" class="btn btn-secondary secondaryButtons" (click)="closeModal()" >Close</button>
@@ -53,8 +53,7 @@
           </ng-container>
         </div>
       </div>
-      <app-submit-button (submitForm)="processTranfer()"></app-submit-button>
+      <app-submit-button (submitForm)="openModal()"></app-submit-button>
     </form>
   </div>
 </app-card>
-

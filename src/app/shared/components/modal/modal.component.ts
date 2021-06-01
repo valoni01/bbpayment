@@ -5,7 +5,7 @@ declare var $: any;
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
-  // changeDetection:ChangeDetectionStrategy.OnPush
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class ModalComponent implements OnInit, OnChanges {
 
@@ -19,17 +19,25 @@ export class ModalComponent implements OnInit, OnChanges {
 
   activateModal(){
     $(document).ready(function(){
-      $("#exampleModalCenter").modal('show');
+      $("#myModal").modal('show');
     });
    }
 
+
   closeModal(){
-  $(document).ready(function(){
-    $("#exampleModalCenter").modal('hide');
-  });
- }
+    $("#myModal").modal('hide');
+    $('.modal-backdrop').remove()
+    this.status = false;
+  }
 
-
+  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
+  ngOnDestroy() {
+    $(document.body).removeClass("modal-open");
+    $(".modal-backdrop").remove();
+    $("#myModal").modal('hide');
+    $('.modal-backdrop').remove()
+    this.status = false;
+  }
 
  modalStatus(status:boolean){
     if(status){
@@ -40,9 +48,7 @@ export class ModalComponent implements OnInit, OnChanges {
  }
 
  ngOnChanges(changes:SimpleChanges) {
-   console.log(changes.status.currentValue)
   this.modalStatus(changes.status.currentValue);
-
 }
 
 }

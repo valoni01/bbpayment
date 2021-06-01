@@ -7,8 +7,16 @@
 body{
   font-family: 'Open Sans', sans-serif;
   font-family: 'Source Sans Pro', sans-serif;
+  overflow: hidden;
 }
 
 .bolder{
   font-weight:bolder;
+}
+
+@media screen and (max-width:800px){
+ body{
+  overflow-y : scroll;
+ }
+
 }

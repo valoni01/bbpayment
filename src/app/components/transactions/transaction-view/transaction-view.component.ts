@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
-import { debounceTime, tap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap, tap, throttleTime } from 'rxjs/operators';
 import { Transaction, TxnResponse } from '../models/Transaction_Response';
 import { TransactionService } from '../transaction.service';
 
@@ -14,15 +14,18 @@ export class TransactionViewComponent implements OnInit {
 
   constructor(private txn_service:TransactionService) { }
 
-  search$ = new Subject<string>();
   transactions$ : Observable<TxnResponse[]> = this.txn_service.currentSearchValue$;
 
   ngOnInit(): void {
-    return;
+    this.getTransactions();
   }
 
   search(e:string){
-     this.transactions$ = this.txn_service.filterTransactions(e.replace(/\s/g, ""))
+    this.transactions$ = this.txn_service.filterTransactions(e)
+  }
+
+  getTransactions(){
+    this.txn_service.getRemoteTRansactions().subscribe();
   }
 
 

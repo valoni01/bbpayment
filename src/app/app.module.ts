@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpRequestInterceptor } from './core/http-request.interceptor';
+
 
 import { AppComponent } from './app.component';
 import { TransactionsModule } from './components/transactions/transactions.module';
@@ -20,8 +22,13 @@ import { BbUIModule } from './shared/external-lib/recruitment-fe-assignment-main
     TransactionsModule,
     BbUIModule,
 
+
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpRequestInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs/internal/observable/of';
+import { TransactionService } from '../transaction.service';
 
 import { TransactionViewComponent } from './transaction-view.component';
 
@@ -7,8 +9,14 @@ describe('TransactionViewComponent', () => {
   let fixture: ComponentFixture<TransactionViewComponent>;
 
   beforeEach(async () => {
+    let MockedTxnService = jasmine.createSpyObj(['getRemoteTRansactions','filterTransactions'])
     await TestBed.configureTestingModule({
-      declarations: [ TransactionViewComponent ]
+      declarations: [ TransactionViewComponent ],
+      providers:[
+        {
+          provide:TransactionService, useValue:MockedTxnService
+        }
+      ]
     })
     .compileComponents();
   });
@@ -19,7 +27,5 @@ describe('TransactionViewComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+
 });

@@ -60,13 +60,20 @@ export class TransferComponent implements OnInit {
 
    processTranfer(){
       this.transferReq = this.transferForm.value;
+      this.transferReq.merchant.name = this.transferReq.merchant.name.replace(/\s+/g, ' ').trim();
       this.txn_service.transferMoney(this.transferReq);
       let availableBal = this.transferReq.accountBalance - this.transferReq.transaction.amountCurrency.amount;
       this.transferForm.patchValue({'accountBalance': availableBal});
-      this.transferForm.get('transaction')?.reset();
+      this.resetForm();
+      this.closeModal();
       return;
   }
 
+
+  resetForm(){
+    this.transferForm.get('merchant')?.reset();
+    this.transferForm.get('transaction.amountCurrency.amount')?.reset()
+   }
 
   openModal(){
     this.transferReq = this.transferForm.value;
@@ -74,7 +81,6 @@ export class TransferComponent implements OnInit {
       this.modalStatus = true;
       return;
     }
-    this.closeModal();
 }
 
   closeModal(){
