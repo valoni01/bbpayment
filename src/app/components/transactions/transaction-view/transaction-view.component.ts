@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap, tap, throttleTime } from 'rxjs/operators';
-import { Transaction, TxnResponse } from '../models/Transaction_Response';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { TxnResponse } from '../models/Transaction_Response';
 import { TransactionService } from '../transaction.service';
 
 
@@ -12,9 +11,12 @@ import { TransactionService } from '../transaction.service';
 })
 export class TransactionViewComponent implements OnInit {
 
+  transactions$ : Observable<TxnResponse[]> = this.txn_service.currentSearchValue$;
+
+
   constructor(private txn_service:TransactionService) { }
 
-  transactions$ : Observable<TxnResponse[]> = this.txn_service.currentSearchValue$;
+
 
   ngOnInit(): void {
     this.getTransactions();

@@ -14,6 +14,7 @@ export class ModalComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
+    $('#myModal').modal({backdrop: 'static', keyboard: false})
     return;
   }
 

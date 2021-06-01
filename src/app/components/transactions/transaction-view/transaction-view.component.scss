@@ -1,31 +1,40 @@
+@import '../../../../assets/styles/var.scss';
 
-
-div[data-test-hook]{
-  font-size: 15px;
-  display:table-cell;
+td{
   text-align: left;
-  padding:10px 0px 10px 0px;
-  width: 10%;
-  font-weight: bolder;
+  vertical-align: bottom;
+  width:15%;
+  padding: $small_spacing 0px $medium_spacing 0px
 }
 
 
-div[data-test-hook="transactionColour"]{
-   height:10px;
-   border:none;
-   width: 5%;
+table {
+  border-collapse: collapse;
+  width: 100%;
 }
+
+#border{
+    font-size: 35px;
+    padding:3px 0px 10px 0px;
+  }
+
+#table_color{
+  width:15px;
+
+}
+
+#table_siblings{
+   padding-top: $medium_spacing
+}
+
 
 app-transaction-item{
   border-top: 1px solid rgb(238, 237, 237);
-  padding:2%;
-  float: right;
   display:table;
   height: 100%;
   width:100%;
   overflow-y:flow;
 }
-
 
 #txntype{
   font-weight: lighter;
@@ -35,10 +44,9 @@ app-transaction-item{
 
 ::ng-deep .input-group-text{
   height:100%;
-
 }
 
-div[data-test-hook="transactionAmount"]{
+td[data-test-hook="transactionAmount"]{
    color: red;
 }
 

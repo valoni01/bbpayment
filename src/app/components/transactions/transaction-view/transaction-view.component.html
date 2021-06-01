@@ -7,17 +7,26 @@
     <div>
       <app-filter  (inputChange)="search($event)" ></app-filter>
     </div>
-    <ng-container *ngFor="let txn of transactions$ | async " >
-      <app-transaction-item >
-        <div [ngStyle]="{'border-color': txn.categoryCode}"  style="border-left:5px solid" data-test-hook="transactionColour"></div>
-        <div data-test-hook="transactionDate">{{txn.dates.valueDate | date: 'MMM d' }}</div>
-        <div  data-test-hook="transactionMerchantName" style="line-height:15px">
-          {{txn.merchant.name}}
-         <span  id="txntype" data-test-hook="transactionType">{{txn.transaction.type}}</span>
-        </div>
-        <div data-test-hook="transactionAmount">{{txn.transaction.amountCurrency.amount |  currency:txn.transaction.amountCurrency.currencyCode}}</div>
-      </app-transaction-item>
+    <ng-container >
+      <table>
+        <tr>
+      <app-transaction-item *ngFor="let txn of transactions$ | async "  >
+          <td  id="table_color" data-test-hook="transactionColour"><span id="border" [ngStyle]="{'border-color': txn.categoryCode}"  style="border-left:5px solid;" ></span> </td>
+          <td data-test-hook="transactionDate" style="padding-bottom:25px;">
+            <span>{{txn.dates.valueDate | date: 'MMM d' }}</span>
+          </td>
+          <td id="table_siblings" data-test-hook="transactionMerchantName">
+             <span >{{txn.merchant.name}}</span>
+             <span id="txntype" data-test-hook="transactionType">{{txn.transaction.type}}</span>
+          </td>
+          <td style="padding-bottom: 25px;" data-test-hook="transactionAmount">
+             <span >{{txn.transaction.amountCurrency.amount |  currency:txn.transaction.amountCurrency.currencyCode}}</span>
+          </td>
+        </app-transaction-item >
+        </tr>
+      </table>
     </ng-container>
   </div>
 </app-card>
+
 
