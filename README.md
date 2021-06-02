@@ -1,7 +1,5 @@
 # BbPayment
 
-## Acceptance Criteria
-All use cases and acceptance criteria were implemented. Both functional and non functional
 ## Project Architecture
 The `app component` is the presentation layer of the application. There is a transaction module that constains the  `transaction component`, `transfer view component` and the `transaction service ` 
 * The transaction view component is responsible for displaying the list of historical txns
